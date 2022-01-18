@@ -1,0 +1,25 @@
+<div style="padding-left: 10%">
+  <div>
+    <h2>My tasks</h2>
+  </div>
+
+  <ul *ngFor="let todo of todos">
+    <li *ngIf="this.todo.isCompleted === false">
+      <input type="checkbox" />
+      {{ todo.item }}
+      <button class="del" (click)="onClick(todo)">Delete</button>
+    </li>
+  </ul>
+
+  <div>
+    <h2>Completed tasks</h2>
+  </div>
+
+  <ul *ngFor="let todo of todos">
+    <li *ngIf="this.todo.isCompleted === true">
+      <input type="checkbox" />
+      {{ todo.item }}
+      <button class="del" (click)="onClick(todo)">Delete</button>
+    </li>
+  </ul>
+</div>
