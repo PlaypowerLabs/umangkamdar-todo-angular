@@ -19,14 +19,30 @@ export class GetTodoComponent implements OnInit {
   ngOnInit() {
     this.http.get<any>('http://localhost:5000/todos').subscribe((data) => {
       this.todos = data;
-      console.log('fjhvj: ', data);
+      console.log('data: ', data);
     });
   }
 
   onClick(todo: Todos) {
-    console.log('del cl');
-    this.http
-      .delete('http://localhost:5000/todos/' + todo.id)
-      .subscribe(() => this.ngOnInit());
+    console.log('del clicked');
+    this.http.delete('http://localhost:5000/todos/' + todo.id).subscribe(() => {
+      console.log('deleted');
+      this.ngOnInit();
+    });
+  }
+
+  onCheckboxChange(e: any, todo: Todos) {
+    if (e) {
+      const headers = { 'content-type': 'application/json' };
+
+      const body = { isCompleted: e.target.checked };
+
+      this.http
+        .put<Todos>('http://localhost:5000/todos/' + todo.id, body, { headers })
+        .subscribe(() => {
+          console.log('put');
+          this.ngOnInit();
+        });
+    }
   }
 }

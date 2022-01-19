@@ -28,7 +28,7 @@ li {
   list-style-type: none;
 }
 
-.card.checked {
+.checked {
   text-decoration: line-through;
 }
 
@@ -54,7 +54,7 @@ p {
   border-radius: 4px;
 }
 
-footer {
+/* footer {
   height: 50px;
   width: 100%;
   background-image: none;
@@ -64,4 +64,4 @@ footer {
   position: fixed;
   bottom: 0pt;
   left: 0pt;
-}
+} */
