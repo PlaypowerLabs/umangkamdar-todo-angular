@@ -1,0 +1,62 @@
+<div style="padding-left: 10%">
+    <div>
+      <h2>My tasks</h2>
+    </div>
+  
+    <ul *ngFor="let todo of todos">
+      <li *ngIf="this.todo.isCompleted === false">
+        <input type="checkbox" (change)="onCheckboxChange($event,todo)"/>
+       <p> {{ todo.item }}  </p>
+        <button class="del" (click)="onClick(todo)">Delete</button>
+      </li>
+    </ul>
+  
+    <div>
+      <h2>Completed tasks</h2>
+    </div>
+  
+    <ul *ngFor="let todo of todos">
+      <li *ngIf="this.todo.isCompleted === true">
+        <input type="checkbox" (change)="onCheckboxChange($event,todo)" checked class="checked"/>
+        <p class="checked" style="text-decoration: line-through;">{{ todo.item }}</p>
+        <button class="del" (click)="onClick(todo)">Delete</button>
+      </li>
+    </ul>
+  </div>
+
+<!-- Try
+
+<div style="padding-left: 10%">
+  <ul *ngFor="let todo of todos">
+    <ng-container
+      [ngTemplateOutlet]="this.todo.isCompleted === false ? not_comp : comp"
+      [ngTemplateOutletContext]="{ todo: todo }"
+    ></ng-container>
+    </ul>    
+ 
+    <ng-template #not_comp let-todo="todo">
+    <div>
+        <h2>My tasks</h2>
+    </div>
+      <li>
+        <input type="checkbox" />
+        {{ todo.item }}
+        <button class="del" (click)="onClick(todo)">Delete</button>
+      </li>
+    </ng-template>
+  
+
+    <ng-template #comp let-todo="todo">
+        <div>
+            <h2>Completed tasks</h2>
+          </div>
+      <li>
+        <input type="checkbox" />
+        {{ todo.item }}
+        <button class="del" (click)="onClick(todo)">Delete</button>
+      </li>
+    </ng-template>
+ 
+</div> -->
+
+

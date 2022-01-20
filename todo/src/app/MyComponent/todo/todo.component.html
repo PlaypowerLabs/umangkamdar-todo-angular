@@ -1,0 +1,17 @@
+<div style="padding-left: 10%">
+  <label>Add To-do tasks:</label><br />
+  <form (ngSubmit)="onSubmit()">
+    <input
+      type="text"
+      id="item"
+      class="txt-input"
+      name="to-do"
+      placeholder="Add your To-do item"
+      [(ngModel)]="item"
+      autofocus
+    />
+    <button type="submit" id="add-btn">Add</button><br />
+  </form>
+</div>
+
+<app-get-todo></app-get-todo>
